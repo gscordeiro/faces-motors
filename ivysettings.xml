@@ -11,9 +11,7 @@
             <ibiblio name="JBoss Maven Repository" m2compatible="true" root="https://repository.jboss.org/nexus/content/groups/public/"/> 
             <ibiblio name="PrimeFaces Maven Repository" m2compatible="true" root="http://repository.primefaces.org"/> 
             <ibiblio name="Java Net Repository" m2compatible="true" root="https://maven.java.net/content/repositories/releases"/> 
-            <!-- 
-            <ibiblio name="Archiva" m2compatible="true" root="http://projeto.intranet:7070/archiva/repository/internal"/>
-             -->
+           
         </chain>
     </resolvers>
 </ivysettings>
