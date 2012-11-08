@@ -14,7 +14,8 @@
 	<p:panel header="#{cc.attrs.auto.modelo.marca} - #{cc.attrs.auto.modelo}">
 		<h:panelGrid columns="2" styleClass="automovel-grid">
 			<h:panelGroup>
-				<h:graphicImage url="https://encrypted-tbn3.google.com/images?q=tbn:ANd9GcTCXkPo-AnKXI1DB4KJetZJRXtkYPrjg7b2Q0WqgsgQaTUx9ra0nA"/>
+				<!-- TODO colocar a imagem do banco -->
+				<h:graphicImage library="images" name="ferrari.jpg"/>
 				<br/>
 				<h:outputText value="#{cc.attrs.auto.preco}" styleClass="preco-automovel">
 					<f:convertNumber type="currency" />

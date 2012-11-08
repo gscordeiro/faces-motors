@@ -46,15 +46,7 @@
 
 		<h:commandButton value="Salvar" action="#{controller.salvar(auto)}" />
 	</h:form>
-	<h:form enctype="multipart/form-data" rendered="false">
-
-		<p:fileUpload id="uploadFotos"
-			fileUploadListener="#{controller.handleFileUpload}" 
-			mode="advanced"
-			multiple="true" 
-			sizeLimit="100000"/>
-
-	</h:form>
+	
 </h:body>
 </html>
 
