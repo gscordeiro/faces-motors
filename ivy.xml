@@ -1,0 +1,15 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="hello-ivy"/>
+    <dependencies>
+        <dependency org="org.hibernate" name="hibernate-entitymanager" rev="4.1+" conf="default"/>
+        <dependency org="com.sun.faces" name="jsf-api" rev="2.2.0-m03" conf="default"/>
+        <dependency org="com.sun.faces" name="jsf-impl" rev="2.2.0-m03" conf="default"/>
+        <dependency org="commons-io" name="commons-io" rev="2.3" conf="default"/>
+        <dependency org="org.primefaces" name="primefaces" rev="3.3+" conf="default"/>
+        <dependency org="org.hibernate" name="hibernate-validator" rev="4+"  conf="default"/>
+        <dependency org="org.hibernate" name="hibernate-ehcache" rev="4+" conf="default"/>
+        <dependency org="jstl" name="jstl" rev="1.2" conf="default"/>
+        <dependency org="mysql" name="mysql-connector-java" rev="5.1.18" conf="default"/>
+        <dependency org="commons-fileupload" name="commons-fileupload" rev="1.2+" conf="default"/>
+    </dependencies>
+</ivy-module>

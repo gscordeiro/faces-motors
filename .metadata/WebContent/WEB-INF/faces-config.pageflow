@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13288719314360" configfile="/faces-motors/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="marca/editar.xhtml" x="122" y="178" id="pf13522946851680" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13522946851691" path="/marca/editar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="marca/#{marcaBean.continuarInserindo? 'editar' : 'listar'}.xhtml" x="338" y="178" id="pf13522946851702" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13522946851691" path="/marca/#{marcaBean.continuarInserindo? 'editar' : 'listar'}.xhtml"/>
+  <links id="pf13522946851691" target="pf13522946851702" source="pf13522946851680" redirect="true"/>
+</pageflow:Pageflow>

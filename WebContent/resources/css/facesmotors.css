@@ -1,0 +1,22 @@
+.automovel-grid td {
+	vertical-align:top;
+	
+}
+
+.preco-automovel {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.label {
+	font-weight: bold;
+	text-align: right;
+}
+
+.table-linha-par {
+	background-color: #FFFFFF;
+}
+
+.table-linha-impar {
+	background-color: #CCCCCC;
+}

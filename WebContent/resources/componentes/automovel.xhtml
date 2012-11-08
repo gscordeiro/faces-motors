@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<cc:interface>
+	<cc:attribute name="auto" />
+</cc:interface>
+
+<cc:implementation>
+	<p:panel header="#{cc.attrs.auto.modelo.marca} - #{cc.attrs.auto.modelo}">
+		<h:panelGrid columns="2" styleClass="automovel-grid">
+			<h:panelGroup>
+				<h:graphicImage url="https://encrypted-tbn3.google.com/images?q=tbn:ANd9GcTCXkPo-AnKXI1DB4KJetZJRXtkYPrjg7b2Q0WqgsgQaTUx9ra0nA"/>
+				<br/>
+				<h:outputText value="#{cc.attrs.auto.preco}" styleClass="preco-automovel">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+			</h:panelGroup>
+			<h:panelGrid columns="2" style="padding-left:150px;">
+	    		<span class="label">Marca:</span>			<h:outputText value="#{cc.attrs.auto.modelo.marca}"/>
+	    		<span class="label">Modelo:</span>			<h:outputText value="#{cc.attrs.auto.modelo}"/>
+	    		<span class="label">Ano Fabricação:</span>	<h:outputText value="#{cc.attrs.auto.anoFabricacao}"/>
+	    		<span class="label">Ano Modelo:</span> 		<h:outputText value="#{cc.attrs.auto.anoModelo}"/>
+	    		<span class="label">Km:</span>				<h:outputText value="#{cc.attrs.auto.kilometragem}"/>
+	    		<span class="label">Cor:</span>				<h:outputText value="#{cc.attrs.auto.cor}"/>
+	    	</h:panelGrid>
+		</h:panelGrid>
+	</p:panel>
+</cc:implementation>
+</html>

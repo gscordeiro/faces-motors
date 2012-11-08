@@ -1,0 +1,19 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="hello-ivy" default="run">
+	
+	<property name="ivy.lib.dir" value="WebContent/WEB-INF/lib"/>
+	
+	<!-- ================================= 
+          target: run              
+         ================================= -->
+    <target name="run" depends="resolve" description="tarefa principal">
+        <echo>buscando dependencias com Ivy...</echo>
+    </target>
+
+	
+    <!-- ================================= 
+          target: resolve              
+         ================================= -->
+    <target name="resolve" description="--> buscando dependencias com ivy">
+        <ivy:retrieve />
+    </target>
+</project>

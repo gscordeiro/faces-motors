@@ -1,0 +1,19 @@
+<ivysettings>
+    <settings defaultResolver="default"/>
+    <property name="m2-pattern" value="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]" override="false" />
+    <resolvers>
+        <chain name="default">
+            <filesystem name="local-maven2" m2compatible="true" >
+                <ivy pattern="${m2-pattern}"/>
+                <artifact pattern="${m2-pattern}"/>
+            </filesystem>
+            <ibiblio name="central" m2compatible="true"/>
+            <ibiblio name="JBoss Maven Repository" m2compatible="true" root="https://repository.jboss.org/nexus/content/groups/public/"/> 
+            <ibiblio name="PrimeFaces Maven Repository" m2compatible="true" root="http://repository.primefaces.org"/> 
+            <ibiblio name="Java Net Repository" m2compatible="true" root="https://maven.java.net/content/repositories/releases"/> 
+            <!-- 
+            <ibiblio name="Archiva" m2compatible="true" root="http://projeto.intranet:7070/archiva/repository/internal"/>
+             -->
+        </chain>
+    </resolvers>
+</ivysettings>

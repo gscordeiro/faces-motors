@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+<h:head>
+  <title>Listagem de Modelos</title>
+</h:head>
+
+<h:body>
+
+	
+		<input type="button" value="Vai para página 2"  onclick="tabelinha.getPaginator().setPage(1);"/>
+
+	<h:form>
+		
+		
+		<p:dataTable widgetVar="tabelinha" value="#{modeloBean.lazyDataModel}" var="modelo" rows="10" paginator="true" lazy="true" style="width: 50%">
+			<p:column>
+				<f:facet name="header">ID</f:facet>
+				#{modelo.id}
+			</p:column>
+			<p:column>
+				<f:facet name="header">Marca</f:facet>
+				#{modelo.marca.nome}
+			</p:column>
+			<p:column>
+				<f:facet name="header">Modelo</f:facet>
+				#{modelo.descricao}
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	
+		
+	
+</h:body>
+
+</html>

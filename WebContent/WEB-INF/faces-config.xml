@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+
+	<application>
+		<resource-bundle>
+			<base-name>br.com.casadocodigo.jsfjpa.messages.Mensagens</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+	</application>
+
+	<navigation-rule>
+		<from-view-id>/marca/editar.xhtml</from-view-id>
+		<navigation-case>
+			<if>#{marcaBean.marca.id != null}</if>
+			<to-view-id>/marca/#{marcaBean.continuarInserindo? 'editar' : 'listar'}.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>
