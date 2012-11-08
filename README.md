@@ -12,6 +12,7 @@ Para facilitar, os jars já estão no projeto, mas o projeto usa o [Ivy](http://
 - Bean Validation 1.0
 
 Sinta-se a vontade para criar "issues" no github para que possamos melhorar o projeto.
+O projeto ainda está sem menu, então a navegação está via url. Em breve um update nesse sentido.
 
 Em breve estarei subindo a parte de testes para JSF com [JSFUnit](http://www.jboss.org/jsfunit) e [Arquillian](http://arquillian.org).
 
