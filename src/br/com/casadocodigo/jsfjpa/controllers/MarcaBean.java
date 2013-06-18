@@ -1,5 +1,6 @@
 package br.com.casadocodigo.jsfjpa.controllers;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +14,9 @@ import br.com.casadocodigo.jsfjpa.persistence.JpaUtil;
 
 @ManagedBean
 @ViewScoped
-public class MarcaBean {
+public class MarcaBean implements Serializable {
+
+	private static final long serialVersionUID = 2806365279342807551L;
 
 	private Marca marca;
 	private List<Marca> marcas;

@@ -1,5 +1,6 @@
 package br.com.casadocodigo.jsfjpa.controllers;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +19,9 @@ import br.com.casadocodigo.jsfjpa.persistence.QueryDataModel;
 
 @ManagedBean
 @ViewScoped
-public class ModeloBean {
+public class ModeloBean implements Serializable{
+
+	private static final long serialVersionUID = -8606041573319607244L;
 
 	private Modelo modelo;
 	private List<Modelo> modelos;

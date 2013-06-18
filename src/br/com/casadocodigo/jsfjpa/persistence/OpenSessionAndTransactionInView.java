@@ -12,7 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter(urlPatterns="/*")
+@WebFilter("/*")
 public class OpenSessionAndTransactionInView implements Filter{
 
 	@Override
@@ -41,7 +41,13 @@ public class OpenSessionAndTransactionInView implements Filter{
 			}
 		}
 		finally {
-//			em.close();
+			
+			 if(em.isOpen()){
+				 em.close();
+			 }
+			
+			 //ou simplesmente
+			 //JpaUtil.closeEntityManager();
 		}
 		
 	}
@@ -51,6 +57,6 @@ public class OpenSessionAndTransactionInView implements Filter{
 		//não precisa fazer nada
 		
 	}
-
+	
 	
 }

@@ -14,38 +14,38 @@
 	<h:form>
 		<h:dataTable value="#{automovelBean.automoveis}" var="automovel" border="1">
 			<h:column>
-				<f:facet name="head">ID</f:facet>
+				<f:facet name="header">ID</f:facet>
 				#{automovel.id}
 			</h:column>
 			<h:column>
-				<f:facet name="head">Marca</f:facet>
+				<f:facet name="header">Marca</f:facet>
 				#{automovel.modelo.marca}
 			</h:column>
 			<h:column>
-				<f:facet name="head">Modelo</f:facet>
+				<f:facet name="header">Modelo</f:facet>
 				#{automovel.modelo}
 			</h:column>
 			<h:column>
-				<f:facet name="head">Ano Fabricação</f:facet>
+				<f:facet name="header">Ano Fabricação</f:facet>
 				#{automovel.anoFabricacao}
 			</h:column>
 			<h:column>
-				<f:facet name="head">Ano Modelo</f:facet>
+				<f:facet name="header">Ano Modelo</f:facet>
 				#{automovel.anoModelo}
 			</h:column>
 			<h:column>
-				<f:facet name="head">Preço</f:facet>
+				<f:facet name="header">Preço</f:facet>
 				<h:outputText value="#{automovel.preco}">
 					<f:convertNumber type="currency"/>
 				</h:outputText>
 			</h:column>
 			<h:column>
-				<f:facet name="head">Observações</f:facet>
+				<f:facet name="header">Observações</f:facet>
 				#{automovel.observacoes}
 			</h:column>
 			<h:column>
-				<f:facet name="head">Ações</f:facet>
-				<h:commandLink value="editar" action="editar">
+				<f:facet name="header">Ações</f:facet>
+				<h:commandLink value="editar" action="editar?faces-redirect=true&amp;includeViewParams=true">
 					<f:setPropertyActionListener target="#{automovelBean.automovel}" value="#{automovel}"/>
 				</h:commandLink>
 			</h:column>

@@ -17,6 +17,14 @@ public class Foto {
 	@ManyToOne
 	private Automovel automovel;
 	
+	public Foto() {
+	}
+	
+	public Foto(String nome, byte[] content, Automovel automovel) {
+		this.nome = nome;
+		this.content = content;
+		this.automovel = automovel;
+	}
 	public Long getId() {
 		return id;
 	}

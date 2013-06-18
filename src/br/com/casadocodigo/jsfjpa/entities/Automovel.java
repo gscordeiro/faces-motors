@@ -1,9 +1,11 @@
 package br.com.casadocodigo.jsfjpa.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -37,7 +39,7 @@ public class Automovel implements Serializable {
 	private Modelo modelo;
 	@ManyToOne
 	private Cor cor;
-	@OneToMany(mappedBy="automovel")
+	@OneToMany(mappedBy="automovel", cascade=CascadeType.ALL)
 	private List<Foto> fotos;
 	@Min(1900) @MaxAnoAtualMais(message="O Valor máximo do ano de fabricação é {0}")
 	private Integer anoFabricacao;
@@ -47,6 +49,9 @@ public class Automovel implements Serializable {
 	private Float kilometragem;
 	private String observacoes;
 	
+	public Automovel() {
+		fotos = new ArrayList<>();
+	}
 	
 	public Long getId() {
 		return id;

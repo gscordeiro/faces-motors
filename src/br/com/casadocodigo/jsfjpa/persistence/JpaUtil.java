@@ -18,16 +18,20 @@ public class JpaUtil {
 	private JpaUtil() {
 	}
 
+	public static boolean isEntityManagerOpen(){
+		return JpaUtil.manager.get() != null && JpaUtil.manager.get().isOpen();
+	}
+	
 	public static EntityManager getEntityManager() {
 		if (JpaUtil.factory == null) {
 			JpaUtil.factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		}
-		EntityManager m = JpaUtil.manager.get();
-		if (m == null) {
-			m = JpaUtil.factory.createEntityManager();
-			JpaUtil.manager.set(m);
+		EntityManager em = JpaUtil.manager.get();
+		if (em == null || !em.isOpen()) {
+			em = JpaUtil.factory.createEntityManager();
+			JpaUtil.manager.set(em);
 		}
-		return m;
+		return em;
 	}
 	
 	public static void evictCache(EntityManager em, String region){
@@ -35,17 +39,13 @@ public class JpaUtil {
 	}
 
 	public static void closeEntityManager() {
-		EntityManager m = JpaUtil.manager.get();
-		if (m != null) {
-			EntityTransaction t = m.getTransaction();
-			if (t.isActive()) { // TODO
-			// CoreLog.getInstance()
-			// .getLog()
-			// .warn("EntityManager contains an active transaction, commiting transaction");
-			// t.commit();
+		EntityManager em = JpaUtil.manager.get();
+		if (em != null) {
+			EntityTransaction tx = em.getTransaction();
+			if (tx.isActive()) { 
+				tx.commit();
 			}
-			m.flush();
-			m.close();
+			em.close();
 			JpaUtil.manager.set(null);
 		}
 	}
