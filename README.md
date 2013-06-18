@@ -6,8 +6,8 @@ Código fonte do [Livro "Aplicações Java para a web com JSF e JPA" da Casa do 
 Para facilitar, os jars já estão no projeto, mas o projeto usa o [Ivy](http://ant.apache.org/ivy/), que é um gerenciador de dependências para Java.
 
 **Frameworks utilizados** (as versões serão atualizadas de tempos em tempos)
-- JSF 2.2-m03
-- JPA 2 (Hibernate 4.1.0)
+- JSF 2.2.0
+- JPA 2 (Hibernate 4.2.2)
 - Primefaces 3.3.1
 - Bean Validation 1.0
 
