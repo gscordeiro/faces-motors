@@ -1,11 +1,27 @@
-build
-target
+### Build ###
+build/
+target/
+
+### Java ###
 *.class
+
+### Maven ###
 *.jar
 *.war
+
+### IntelliJ ###
 .idea/
 *.iml
+
+### Eclipse (ignorar — projeto usa Maven/IntelliJ) ###
 .classpath
 .project
 .settings/
 .factorypath
+.metadata/
+
+### H2 (banco em arquivo, se usado) ###
+data/
+
+### Logs de sessões IA ###
+.ai-sessions/

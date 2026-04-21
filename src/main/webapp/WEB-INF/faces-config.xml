@@ -7,7 +7,7 @@
 
 	<application>
 		<resource-bundle>
-			<base-name>br.com.casadocodigo.jsfjpa.messages.Mensagens</base-name>
+			<base-name>dev.gscordeiro.facesmotors.messages.Mensagens</base-name>
 			<var>msgs</var>
 		</resource-bundle>
 	</application>
