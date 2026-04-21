@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core"
+	xmlns:c="jakarta.tags.core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:motors="jakarta.faces.composite.componentes">
+<h:head>
+	<title>Edição de Automóvel</title>
+</h:head>
+<h:body>
+	<h:form>
+
+		<h:messages />
+
+		<c:set var="auto" value="#{automovelBean.automovel}" />
+		<c:set var="controller" value="#{automovelBean}" />
+
+		<motors:painel colunas="2">
+			<f:facet name="header">  
+		        Automóvel
+		    </f:facet>
+		    <f:facet name="footer">  
+		        Desenvolvido pela Casa do Código
+		    </f:facet>
+		
+		
+			Marca: <h:selectOneMenu id="selectMarca" label="marca" value="#{controller.marca}" required="true" converter="entityConverter">
+						<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true" />
+						<f:selectItems value="#{marcaBean.marcas}" var="marca" itemValue="#{marca}" itemLabel="#{marca.nome}" />
+						<f:ajax render="selectModelo" />
+					</h:selectOneMenu>
+			Modelo: <h:selectOneMenu id="selectModelo" label="modelo" value="#{auto.modelo}" required="true" converter="entityConverter">
+						<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true" />
+						<f:selectItems value="#{controller.marca.modelos}" var="modelo" itemValue="#{modelo}" itemLabel="#{modelo.descricao}" />
+					</h:selectOneMenu>
+			Ano de Fabricação: <h:inputText value="#{auto.anoFabricacao}" />
+			Ano do Modelo: <h:inputText value="#{auto.anoModelo}" />
+			Preço: <h:inputText value="#{auto.preco}" />
+			Kilometragem: <h:inputText value="#{auto.kilometragem}" />
+			Observações: <h:inputTextarea value="#{auto.observacoes}" />
+				
+		</motors:painel>
+
+		<h:commandButton value="Salvar" action="#{controller.salvar(auto)}" />
+	</h:form>
+	
+</h:body>
+</html>
+
+
