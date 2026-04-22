@@ -8,6 +8,7 @@ import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
 import dev.gscordeiro.facesmotors.entities.Marca;
@@ -19,8 +20,8 @@ public class MarcaBean implements Serializable {
 
 	private static final long serialVersionUID = 2806365279342807551L;
 
-	@Inject
-	EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 
 	private Marca marca;
 	private List<Marca> marcas;

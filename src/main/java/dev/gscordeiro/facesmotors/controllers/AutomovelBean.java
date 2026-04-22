@@ -12,6 +12,7 @@ import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
@@ -28,8 +29,8 @@ public class AutomovelBean implements Serializable{
 	
 	static final long serialVersionUID = -8780407253943723401L;
 	
-	@Inject
-	EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 
 	private Automovel automovel;
 	private List<Automovel> automoveis;

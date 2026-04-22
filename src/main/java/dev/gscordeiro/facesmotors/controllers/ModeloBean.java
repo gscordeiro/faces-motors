@@ -10,6 +10,7 @@ import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
 import org.primefaces.model.LazyDataModel;
@@ -24,8 +25,8 @@ public class ModeloBean implements Serializable{
 
 	private static final long serialVersionUID = -8606041573319607244L;
 
-	@Inject
-	EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 
 	private Modelo modelo;
 	private List<Modelo> modelos;

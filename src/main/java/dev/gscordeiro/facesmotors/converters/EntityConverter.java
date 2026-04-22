@@ -4,9 +4,9 @@ import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
-import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
+import jakarta.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 @FacesConverter(value = "entityConverter", managed = true)
 public class EntityConverter implements Converter<Object> {
 
-	@Inject
-	EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 
 	private Logger logger = LoggerFactory.getLogger(EntityConverter.class);
 	

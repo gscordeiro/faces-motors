@@ -12,6 +12,7 @@
 		</resource-bundle>
 	</application>
 
+
 	<navigation-rule>
 		<from-view-id>/marca/editar.xhtml</from-view-id>
 		<navigation-case>
