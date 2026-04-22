@@ -1,16 +1,16 @@
 package dev.gscordeiro.facesmotors.converters;
 
+import jakarta.enterprise.context.Dependent;
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 import jakarta.persistence.EntityManager;
-
 import jakarta.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+@Dependent
 @FacesConverter(value = "entityConverter", managed = true)
 public class EntityConverter implements Converter<Object> {
 
