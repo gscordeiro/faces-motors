@@ -5,11 +5,12 @@ import java.util.List;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 
 import dev.gscordeiro.facesmotors.entities.Marca;
-import dev.gscordeiro.facesmotors.persistence.JpaUtil;
 
 
 @Named
@@ -18,24 +19,26 @@ public class MarcaBean implements Serializable {
 
 	private static final long serialVersionUID = 2806365279342807551L;
 
+	@Inject
+	EntityManager em;
+
 	private Marca marca;
 	private List<Marca> marcas;
 	private boolean continuarInserindo;
-	
+
 	@PostConstruct
 	public void init(){
 		marca = new Marca();
 	}
 
+	@Transactional
 	public void salvar() {
-		EntityManager em = JpaUtil.getEntityManager();
 		em.persist(marca);
-		
 	}
 
 	public List<Marca> getMarcas() {
 		if (marcas == null) {
-			marcas = JpaUtil.getEntityManager().createQuery("select m from Marca m", Marca.class).getResultList();
+			marcas = em.createQuery("select m from Marca m", Marca.class).getResultList();
 		}
 
 		return marcas;

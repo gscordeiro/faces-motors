@@ -4,15 +4,18 @@ import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dev.gscordeiro.facesmotors.persistence.JpaUtil;
-
 
 @FacesConverter(value = "entityConverter", managed = true)
 public class EntityConverter implements Converter<Object> {
+
+	@Inject
+	EntityManager em;
 
 	private Logger logger = LoggerFactory.getLogger(EntityConverter.class);
 	
@@ -37,7 +40,7 @@ public class EntityConverter implements Converter<Object> {
 		
 		try {
 			String[] values = string.split("-");
-			return JpaUtil.getEntityManager().find(Class.forName(values[0]), Long.valueOf(values[1]));
+			return em.find(Class.forName(values[0]), Long.valueOf(values[1]));
 		} catch (Exception e) {
 			logger.error("Erro ao converter String em entidade", e);
 			return null;
