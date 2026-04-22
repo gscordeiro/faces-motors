@@ -25,3 +25,6 @@ data/
 
 ### Logs de sessões IA ###
 .ai-sessions/
+
+### Rascunho pessoal / anotações para o livro ###
+TODO.md
