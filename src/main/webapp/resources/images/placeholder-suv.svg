@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="car" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <g opacity="0.12" stroke="#fff" stroke-width="80" stroke-linecap="round">
+    <line x1="-100" y1="600" x2="900" y2="-200"/>
+  </g>
+  <rect x="0" y="360" width="800" height="90" fill="rgba(0,0,0,0.35)"/>
+  <path d="M 140 360 L 140 280 Q 145 200 220 195 L 540 195 Q 615 195 625 270 L 660 275 Q 680 280 680 300 L 680 360 Z" fill="url(#car)" stroke="#1e293b" stroke-width="2"/>
+  <path d="M 165 270 Q 175 210 230 205 L 400 205 L 400 270 Z" fill="url(#glass)" opacity="0.9"/>
+  <path d="M 410 205 L 540 205 Q 595 205 610 270 L 410 270 Z" fill="url(#glass)" opacity="0.9"/>
+  <line x1="380" y1="280" x2="380" y2="355" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="100" y="280" width="600" height="6" fill="#1e293b" opacity="0.4"/>
+  <rect x="135" y="345" width="40" height="10" fill="#1e293b" rx="2"/>
+  <rect x="630" y="345" width="40" height="10" fill="#1e293b" rx="2"/>
+  <ellipse cx="670" cy="320" rx="14" ry="8" fill="#fde047"/>
+  <rect x="143" y="305" width="16" height="22" rx="3" fill="#dc2626"/>
+  <circle cx="225" cy="358" r="42" fill="#0f172a"/>
+  <circle cx="225" cy="358" r="24" fill="#94a3b8"/>
+  <circle cx="225" cy="358" r="7" fill="#1e293b"/>
+  <circle cx="585" cy="358" r="42" fill="#0f172a"/>
+  <circle cx="585" cy="358" r="24" fill="#94a3b8"/>
+  <circle cx="585" cy="358" r="7" fill="#1e293b"/>
+  <text x="400" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#ffffff" letter-spacing="8" font-weight="800" opacity="0.85">SUV</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#fde047" letter-spacing="6" font-weight="700">FACES MOTORS</text>
+</svg>

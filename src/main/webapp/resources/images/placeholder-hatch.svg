@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <linearGradient id="car" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <g opacity="0.12" stroke="#fff" stroke-width="80" stroke-linecap="round">
+    <line x1="-100" y1="600" x2="900" y2="-200"/>
+  </g>
+  <rect x="0" y="365" width="800" height="85" fill="rgba(0,0,0,0.35)"/>
+  <path d="M 180 360 Q 175 220 245 215 L 460 215 Q 540 215 565 285 L 615 285 Q 645 285 650 305 L 650 360 Z" fill="url(#car)" stroke="#1e293b" stroke-width="2"/>
+  <path d="M 200 280 Q 195 230 250 225 L 415 225 Q 415 280 415 280 Z" fill="url(#glass)" opacity="0.9"/>
+  <path d="M 425 225 L 455 225 Q 525 225 545 280 L 425 280 Z" fill="url(#glass)" opacity="0.9"/>
+  <line x1="395" y1="285" x2="395" y2="355" stroke="#64748b" stroke-width="1.5"/>
+  <ellipse cx="640" cy="320" rx="14" ry="8" fill="#fde047"/>
+  <rect x="183" y="305" width="14" height="22" rx="3" fill="#dc2626"/>
+  <circle cx="245" cy="362" r="36" fill="#0f172a"/>
+  <circle cx="245" cy="362" r="20" fill="#94a3b8"/>
+  <circle cx="245" cy="362" r="6" fill="#1e293b"/>
+  <circle cx="555" cy="362" r="36" fill="#0f172a"/>
+  <circle cx="555" cy="362" r="20" fill="#94a3b8"/>
+  <circle cx="555" cy="362" r="6" fill="#1e293b"/>
+  <text x="400" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#ffffff" letter-spacing="8" font-weight="800" opacity="0.85">HATCH</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#fde047" letter-spacing="6" font-weight="700">FACES MOTORS</text>
+</svg>

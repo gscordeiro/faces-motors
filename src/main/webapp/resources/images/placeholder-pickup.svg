@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="car" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <linearGradient id="bed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <g opacity="0.12" stroke="#fff" stroke-width="80" stroke-linecap="round">
+    <line x1="-100" y1="600" x2="900" y2="-200"/>
+  </g>
+  <rect x="0" y="360" width="800" height="90" fill="rgba(0,0,0,0.35)"/>
+  <!-- bed -->
+  <path d="M 125 360 L 125 250 L 410 250 L 410 360 Z" fill="url(#bed)" stroke="#1e293b" stroke-width="2"/>
+  <rect x="140" y="265" width="255" height="80" fill="#1e293b" opacity="0.6"/>
+  <!-- cab -->
+  <path d="M 410 360 L 410 260 Q 420 195 490 195 L 590 195 Q 640 195 660 260 L 690 270 Q 710 275 710 295 L 710 360 Z" fill="url(#car)" stroke="#1e293b" stroke-width="2"/>
+  <!-- windows -->
+  <path d="M 430 255 Q 435 210 490 210 L 590 210 Q 630 210 645 255 Z" fill="url(#glass)" opacity="0.9"/>
+  <line x1="540" y1="210" x2="540" y2="255" stroke="#475569" stroke-width="3"/>
+  <line x1="490" y1="270" x2="490" y2="355" stroke="#64748b" stroke-width="1.5"/>
+  <ellipse cx="700" cy="320" rx="14" ry="8" fill="#fde047"/>
+  <rect x="128" y="305" width="14" height="22" rx="3" fill="#dc2626"/>
+  <!-- wheels -->
+  <circle cx="210" cy="358" r="44" fill="#0f172a"/>
+  <circle cx="210" cy="358" r="26" fill="#94a3b8"/>
+  <circle cx="210" cy="358" r="8" fill="#1e293b"/>
+  <circle cx="615" cy="358" r="44" fill="#0f172a"/>
+  <circle cx="615" cy="358" r="26" fill="#94a3b8"/>
+  <circle cx="615" cy="358" r="8" fill="#1e293b"/>
+  <text x="400" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#ffffff" letter-spacing="8" font-weight="800" opacity="0.85">PICKUP</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#fde047" letter-spacing="6" font-weight="700">FACES MOTORS</text>
+</svg>
