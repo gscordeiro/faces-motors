@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="jakarta.faces.html"
+	  xmlns:f="jakarta.faces.core"
+	  xmlns:ui="jakarta.faces.facelets">
+<f:view transient="true" contentType="text/html" encoding="UTF-8">
+
+	<ui:insert name="metadata"/>
+
+	<h:head>
+		<title><ui:insert name="title">Faces Motors - Seminovos selecionados</ui:insert></title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="description" content="Vitrine de carros seminovos da Faces Motors."/>
+		<h:outputStylesheet library="css" name="vitrine.css"/>
+		<ui:insert name="head"/>
+	</h:head>
+
+	<h:body>
+
+		<header class="fm-header">
+			<div class="fm-header-inner">
+				<h:link outcome="/vitrine" styleClass="fm-logo">
+					<span class="fm-logo-mark">FM</span>
+					<span>Faces <strong>Motors</strong></span>
+				</h:link>
+				<nav class="fm-nav">
+					<h:link outcome="/vitrine">Comprar</h:link>
+					<a href="#">Vender meu carro</a>
+					<a href="#">Financiamento</a>
+					<a href="#">Atendimento</a>
+				</nav>
+			</div>
+		</header>
+
+		<ui:insert name="hero"/>
+
+		<main class="fm-container">
+			<ui:insert name="content"/>
+		</main>
+
+		<footer class="fm-footer">
+			<p>© Faces Motors — Seu próximo carro está aqui.</p>
+		</footer>
+
+	</h:body>
+</f:view>
+</html>

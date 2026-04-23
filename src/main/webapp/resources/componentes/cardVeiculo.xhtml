@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:cc="jakarta.faces.composite"
+	  xmlns:h="jakarta.faces.html"
+	  xmlns:f="jakarta.faces.core">
+
+<cc:interface>
+	<cc:attribute name="auto"
+				  type="dev.gscordeiro.facesmotors.entities.Automovel"
+				  required="true"
+				  shortDescription="Automóvel a ser exibido no card."/>
+</cc:interface>
+
+<cc:implementation>
+	<h:link outcome="/automovel/visualizar" styleClass="fm-card-link">
+		<f:param name="cod" value="#{cc.attrs.auto.codigo}"/>
+
+		<h:panelGroup layout="block" styleClass="fm-card">
+
+			<h:panelGroup layout="block" styleClass="fm-card-img">
+				<h:graphicImage library="images"
+								name="#{foto.caminho(cc.attrs.auto)}"
+								alt="#{cc.attrs.auto.modelo.marca} #{cc.attrs.auto.modelo}"/>
+				<span class="fm-badge">#{cc.attrs.auto.anoFabricacao}/#{cc.attrs.auto.anoModelo}</span>
+				<span class="fm-color-pill">
+					<span class="fm-color-dot cor-#{cc.attrs.auto.cor.descricao.toLowerCase()}"></span>
+					#{cc.attrs.auto.cor.descricao}
+				</span>
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" styleClass="fm-card-body">
+				<p class="fm-marca">#{cc.attrs.auto.modelo.marca}</p>
+				<h3 class="fm-modelo">#{cc.attrs.auto.modelo}</h3>
+
+				<ul class="fm-specs">
+					<li>
+						<span>Ano</span>
+						#{cc.attrs.auto.anoFabricacao}/#{cc.attrs.auto.anoModelo}
+					</li>
+					<li>
+						<span>Quilometragem</span>
+						<h:outputText value="#{cc.attrs.auto.kilometragem}">
+							<f:convertNumber pattern="#,##0 'km'"/>
+						</h:outputText>
+					</li>
+					<li>
+						<span>Potência</span>
+						#{cc.attrs.auto.modelo.potencia} cv
+					</li>
+					<li>
+						<span>Cor</span>
+						#{cc.attrs.auto.cor.descricao}
+					</li>
+				</ul>
+
+				<p class="fm-obs">#{cc.attrs.auto.observacoes}</p>
+
+				<h:panelGroup layout="block" styleClass="fm-price-row">
+					<h:outputText value="#{cc.attrs.auto.preco}" styleClass="fm-price">
+						<f:convertNumber type="currency" currencySymbol="R$ "/>
+					</h:outputText>
+					<span class="fm-cta">Ver detalhes</span>
+				</h:panelGroup>
+			</h:panelGroup>
+
+		</h:panelGroup>
+	</h:link>
+</cc:implementation>
+</html>

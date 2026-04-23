@@ -35,11 +35,4 @@ public class VitrineBean {
 	public int getTotalAutomoveis() {
 		return getAutomoveis().size();
 	}
-
-	public String imagemDe(Automovel auto) {
-		if (auto.getFotos() != null && !auto.getFotos().isEmpty() && auto.getFotos().get(0).getNome() != null) {
-			return auto.getFotos().get(0).getNome();
-		}
-		return "placeholder-sedan.svg";
-	}
 }
