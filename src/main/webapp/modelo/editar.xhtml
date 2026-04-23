@@ -1,18 +1,60 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="jakarta.faces.facelets"
-      xmlns:h="jakarta.faces.html"
-      xmlns:f="jakarta.faces.core"
-      xmlns:c="jakarta.tags.core"
-      xmlns:motors="jakarta.faces.composite/componentes">
-	<h:head>
-	  <title>Edição de Modelo</title>
-	</h:head>
-	<h:body>
-	
-		<h:messages/>
-		<motors:modelo colunas="2" modelo="#{modeloBean.modelo}" acao="#{modeloBean.salvar(modeloBean.modelo)}"/>
-	
-	</h:body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="jakarta.faces.html"
+				xmlns:f="jakarta.faces.core"
+				xmlns:ui="jakarta.faces.facelets"
+				xmlns:p="http://primefaces.org/ui">
+
+	<ui:param name="stateless" value="#{false}"/>
+
+	<ui:define name="title">Novo modelo - Faces Motors</ui:define>
+
+	<ui:define name="content">
+
+		<div class="fm-page-header">
+			<div>
+				<h1>Novo modelo</h1>
+				<p>Cadastro de modelo vinculado a uma marca.</p>
+			</div>
+			<p:button outcome="/modelo/listar" value="Voltar" icon="pi pi-arrow-left" styleClass="fm-cta fm-cta-ghost"/>
+		</div>
+
+		<div class="fm-detail-section">
+			<h:form id="formModelo" styleClass="fm-form">
+				<p:messages showDetail="true" closable="true"/>
+
+				<div class="fm-field">
+					<p:outputLabel for="marca" value="Marca"/>
+					<p:selectOneMenu id="marca" value="#{modeloBean.modelo.marca}" converter="entityConverter"
+									 required="true" requiredMessage="Selecione uma marca.">
+						<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true"/>
+						<f:selectItems value="#{marcaBean.marcas}" var="marca"
+									   itemValue="#{marca}" itemLabel="#{marca.nome}"/>
+					</p:selectOneMenu>
+				</div>
+
+				<div class="fm-field">
+					<p:outputLabel for="descricao" value="Descrição"/>
+					<p:inputText id="descricao" value="#{modeloBean.modelo.descricao}" required="true"/>
+				</div>
+
+				<div class="fm-field">
+					<p:outputLabel for="potencia" value="Potência (cv)"/>
+					<p:inputNumber id="potencia" value="#{modeloBean.modelo.potencia}" decimalPlaces="0"
+								   thousandSeparator="." inputStyle="max-width:140px;"/>
+				</div>
+
+				<div class="fm-form-actions">
+					<p:commandButton value="Salvar" icon="pi pi-check"
+									 action="#{modeloBean.salvar(modeloBean.modelo)}"
+									 update="@form" styleClass="fm-cta fm-cta-primary"/>
+					<p:button outcome="/modelo/listar" value="Cancelar" icon="pi pi-times" styleClass="fm-cta fm-cta-ghost"/>
+				</div>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

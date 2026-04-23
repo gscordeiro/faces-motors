@@ -9,24 +9,26 @@
 				xmlns:p="http://primefaces.org/ui"
 				xmlns:motors="jakarta.faces.composite/componentes">
 
+	<ui:param name="stateless" value="#{true}"/>
+
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:viewParam name="cod" value="#{visualizarAutomovelBean.codigo}" required="true"
+			<f:viewParam name="cod" value="#{automovelBean.codigo}" required="true"
 						 requiredMessage="Informe o código do veículo."/>
-			<f:viewAction action="#{visualizarAutomovelBean.carregar}"/>
+			<f:viewAction action="#{automovelBean.carregar}"/>
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="title">
-		<h:outputText value="#{visualizarAutomovelBean.automovel.modelo.marca} #{visualizarAutomovelBean.automovel.modelo} - Faces Motors"
-					  rendered="#{visualizarAutomovelBean.encontrado}"/>
+		<h:outputText value="#{automovelBean.automovel.modelo.marca} #{automovelBean.automovel.modelo} - Faces Motors"
+					  rendered="#{automovelBean.encontrado}"/>
 		<h:outputText value="Veículo não encontrado - Faces Motors"
-					  rendered="#{not visualizarAutomovelBean.encontrado}"/>
+					  rendered="#{not automovelBean.encontrado}"/>
 	</ui:define>
 
 	<ui:define name="content">
 
-		<ui:fragment rendered="#{not visualizarAutomovelBean.encontrado}">
+		<ui:fragment rendered="#{not automovelBean.encontrado}">
 			<div class="fm-empty">
 				<h2>Veículo indisponível</h2>
 				<p>Este anúncio pode ter sido vendido ou removido. <h:link outcome="/vitrine">Voltar para a vitrine</h:link>.</p>
@@ -34,58 +36,58 @@
 			</div>
 		</ui:fragment>
 
-		<ui:fragment rendered="#{visualizarAutomovelBean.encontrado}">
+		<ui:fragment rendered="#{automovelBean.encontrado}">
 
 			<nav class="fm-breadcrumb">
 				<h:link outcome="/vitrine">Vitrine</h:link>
 				<span>/</span>
-				<span>#{visualizarAutomovelBean.automovel.modelo.marca}</span>
+				<span>#{automovelBean.automovel.modelo.marca}</span>
 				<span>/</span>
-				<strong>#{visualizarAutomovelBean.automovel.modelo}</strong>
+				<strong>#{automovelBean.automovel.modelo}</strong>
 			</nav>
 
 			<section class="fm-detail">
 
 				<div class="fm-detail-gallery">
-					<p:galleria value="#{visualizarAutomovelBean.automovel.fotos}" var="f"
+					<p:galleria value="#{automovelBean.automovel.fotos}" var="f"
 								numVisible="4" showIndicators="false" showCaption="false"
 								containerStyle="width: 100%;">
 						<f:facet name="item">
 							<h:graphicImage library="images"
 											name="#{f.nome}"
 											styleClass="fm-detail-img"
-											alt="#{visualizarAutomovelBean.automovel.modelo.marca} #{visualizarAutomovelBean.automovel.modelo}"/>
+											alt="#{automovelBean.automovel.modelo.marca} #{automovelBean.automovel.modelo}"/>
 						</f:facet>
 						<f:facet name="thumbnail">
 							<h:graphicImage library="images" name="#{f.nome}" styleClass="fm-detail-thumb"/>
 						</f:facet>
 					</p:galleria>
 
-					<ui:fragment rendered="#{empty visualizarAutomovelBean.automovel.fotos}">
-						<h:graphicImage library="images" name="#{foto.caminho(visualizarAutomovelBean.automovel)}"
+					<ui:fragment rendered="#{empty automovelBean.automovel.fotos}">
+						<h:graphicImage library="images" name="#{foto.caminho(automovelBean.automovel)}"
 										styleClass="fm-detail-img"/>
 					</ui:fragment>
 				</div>
 
 				<aside class="fm-detail-aside">
-					<p class="fm-marca">#{visualizarAutomovelBean.automovel.modelo.marca}</p>
-					<h1 class="fm-detail-title">#{visualizarAutomovelBean.automovel.modelo}</h1>
+					<p class="fm-marca">#{automovelBean.automovel.modelo.marca}</p>
+					<h1 class="fm-detail-title">#{automovelBean.automovel.modelo}</h1>
 
 					<div class="fm-tag-row">
-						<p:tag value="#{visualizarAutomovelBean.automovel.anoFabricacao}/#{visualizarAutomovelBean.automovel.anoModelo}"
+						<p:tag value="#{automovelBean.automovel.anoFabricacao}/#{automovelBean.automovel.anoModelo}"
 							   icon="pi pi-calendar" severity="info"/>
-						<p:tag value="#{visualizarAutomovelBean.automovel.cor.descricao}" severity="secondary"/>
-						<p:tag value="Cód. #{visualizarAutomovelBean.automovel.codigo}" severity="contrast"/>
+						<p:tag value="#{automovelBean.automovel.cor.descricao}" severity="secondary"/>
+						<p:tag value="Cód. #{codigos.encriptar(automovelBean.automovel.id)}" severity="contrast"/>
 					</div>
 
-					<h:outputText value="#{visualizarAutomovelBean.automovel.preco}" styleClass="fm-detail-price">
+					<h:outputText value="#{automovelBean.automovel.preco}" styleClass="fm-detail-price">
 						<f:convertNumber type="currency" currencySymbol="R$ "/>
 					</h:outputText>
 
 					<p class="fm-detail-financ">
 						ou financie em até 60x —
 						<strong>
-							<h:outputText value="#{visualizarAutomovelBean.automovel.preco / 60}">
+							<h:outputText value="#{automovelBean.automovel.preco / 60}">
 								<f:convertNumber type="currency" currencySymbol="R$ "/>
 							</h:outputText>
 						</strong>
@@ -103,31 +105,31 @@
 			<section class="fm-detail-section">
 				<h2>Ficha técnica</h2>
 				<dl class="fm-spec-grid">
-					<div><dt>Marca</dt><dd>#{visualizarAutomovelBean.automovel.modelo.marca}</dd></div>
-					<div><dt>Modelo</dt><dd>#{visualizarAutomovelBean.automovel.modelo}</dd></div>
-					<div><dt>Ano de fabricação</dt><dd>#{visualizarAutomovelBean.automovel.anoFabricacao}</dd></div>
-					<div><dt>Ano do modelo</dt><dd>#{visualizarAutomovelBean.automovel.anoModelo}</dd></div>
+					<div><dt>Marca</dt><dd>#{automovelBean.automovel.modelo.marca}</dd></div>
+					<div><dt>Modelo</dt><dd>#{automovelBean.automovel.modelo}</dd></div>
+					<div><dt>Ano de fabricação</dt><dd>#{automovelBean.automovel.anoFabricacao}</dd></div>
+					<div><dt>Ano do modelo</dt><dd>#{automovelBean.automovel.anoModelo}</dd></div>
 					<div><dt>Quilometragem</dt><dd>
-						<h:outputText value="#{visualizarAutomovelBean.automovel.kilometragem}">
+						<h:outputText value="#{automovelBean.automovel.kilometragem}">
 							<f:convertNumber pattern="#,##0 'km'"/>
 						</h:outputText>
 					</dd></div>
-					<div><dt>Potência</dt><dd>#{visualizarAutomovelBean.automovel.modelo.potencia} cv</dd></div>
-					<div><dt>Cor</dt><dd>#{visualizarAutomovelBean.automovel.cor.descricao}</dd></div>
-					<div><dt>Código</dt><dd>#{visualizarAutomovelBean.automovel.codigo}</dd></div>
+					<div><dt>Potência</dt><dd>#{automovelBean.automovel.modelo.potencia} cv</dd></div>
+					<div><dt>Cor</dt><dd>#{automovelBean.automovel.cor.descricao}</dd></div>
+					<div><dt>Código</dt><dd>#{codigos.encriptar(automovelBean.automovel.id)}</dd></div>
 				</dl>
 			</section>
 
 			<section class="fm-detail-section">
 				<h2>Observações do vendedor</h2>
-				<p class="fm-detail-obs">#{visualizarAutomovelBean.automovel.observacoes}</p>
+				<p class="fm-detail-obs">#{automovelBean.automovel.observacoes}</p>
 			</section>
 
-			<ui:fragment rendered="#{not empty visualizarAutomovelBean.sugestoes}">
+			<ui:fragment rendered="#{not empty automovelBean.sugestoes}">
 				<section class="fm-detail-section">
-					<h2>Veículos parecidos da #{visualizarAutomovelBean.automovel.modelo.marca}</h2>
+					<h2>Veículos parecidos da #{automovelBean.automovel.modelo.marca}</h2>
 					<div class="fm-grid">
-						<ui:repeat value="#{visualizarAutomovelBean.sugestoes}" var="auto">
+						<ui:repeat value="#{automovelBean.sugestoes}" var="auto">
 							<motors:cardVeiculo auto="#{auto}"/>
 						</ui:repeat>
 					</div>

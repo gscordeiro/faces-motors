@@ -5,7 +5,7 @@
 	  xmlns:h="jakarta.faces.html"
 	  xmlns:f="jakarta.faces.core"
 	  xmlns:ui="jakarta.faces.facelets">
-<f:view transient="true" contentType="text/html" encoding="UTF-8">
+<f:view transient="#{stateless eq true}" contentType="text/html" encoding="UTF-8">
 
 	<ui:insert name="metadata"/>
 
@@ -28,9 +28,9 @@
 				</h:link>
 				<nav class="fm-nav">
 					<h:link outcome="/vitrine">Comprar</h:link>
-					<a href="#">Vender meu carro</a>
-					<a href="#">Financiamento</a>
-					<a href="#">Atendimento</a>
+					<h:link outcome="/marca/listar">Marcas</h:link>
+					<h:link outcome="/modelo/listar">Modelos</h:link>
+					<h:link outcome="/automovel/listar">Estoque</h:link>
 				</nav>
 			</div>
 		</header>

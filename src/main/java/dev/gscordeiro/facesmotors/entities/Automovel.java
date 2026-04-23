@@ -3,11 +3,9 @@ package dev.gscordeiro.facesmotors.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -15,7 +13,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.QueryHint;
 import jakarta.validation.constraints.Min;
 
@@ -38,8 +35,6 @@ public class Automovel implements Serializable {
 	
 	@Id @GeneratedValue
 	private Long id;
-	@Column(unique=true, length=12)
-	private String codigo;
 	@ManyToOne
 	private Modelo modelo;
 	@ManyToOne
@@ -56,20 +51,6 @@ public class Automovel implements Serializable {
 
 	public Automovel() {
 		fotos = new ArrayList<>();
-	}
-
-	@PrePersist
-	private void aoPersistir() {
-		if (codigo == null) {
-			codigo = UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
-		}
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}
 	
 	public Long getId() {

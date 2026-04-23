@@ -1,27 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="jakarta.faces.facelets"
-      xmlns:h="jakarta.faces.html"
-      xmlns:f="jakarta.faces.core"
-      xmlns:c="jakarta.tags.core">
-	<h:head>
-	  <title>Edição de Marca</title>
-	</h:head>
-	<h:body>
-		<h:form>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="jakarta.faces.html"
+				xmlns:f="jakarta.faces.core"
+				xmlns:ui="jakarta.faces.facelets"
+				xmlns:p="http://primefaces.org/ui">
 
-			<h:panelGrid columns="2">
-				ID: <h:outputText value="#{marcaBean.marca.id}"/>
-				Marca: <h:inputText value="#{marcaBean.marca.nome}" required="true"/>
-			</h:panelGrid>
-			
-			<br/>
-			<h:selectBooleanCheckbox value="#{marcaBean.continuarInserindo}"/>
-			Contunuar Inserindo
-			<br/>
-			<h:commandButton value="Salvar" action="#{marcaBean.salvar}"/>
-		
-		</h:form>
-	</h:body>
-</html>
+	<ui:param name="stateless" value="#{false}"/>
+
+	<ui:define name="title">Nova marca - Faces Motors</ui:define>
+
+	<ui:define name="content">
+
+		<div class="fm-page-header">
+			<div>
+				<h1>Nova marca</h1>
+				<p>Cadastro de marca de veículos.</p>
+			</div>
+			<p:button outcome="/marca/listar" value="Voltar" icon="pi pi-arrow-left" styleClass="fm-cta fm-cta-ghost"/>
+		</div>
+
+		<div class="fm-detail-section">
+			<h:form id="formMarca" styleClass="fm-form">
+				<p:messages showDetail="true" closable="true"/>
+
+				<div class="fm-field">
+					<p:outputLabel for="@next" value="Nome da marca"/>
+					<p:inputText value="#{marcaBean.marca.nome}" required="true"
+								 requiredMessage="Informe o nome da marca."/>
+				</div>
+
+				<div class="fm-field-inline">
+					<p:selectBooleanCheckbox value="#{marcaBean.continuarInserindo}"/>
+					<p:outputLabel value="Continuar inserindo após salvar"/>
+				</div>
+
+				<div class="fm-form-actions">
+					<p:commandButton value="Salvar" icon="pi pi-check" action="#{marcaBean.salvar}"
+									 update="@form" styleClass="fm-cta fm-cta-primary"/>
+					<p:button outcome="/marca/listar" value="Cancelar" icon="pi pi-times" styleClass="fm-cta fm-cta-ghost"/>
+				</div>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

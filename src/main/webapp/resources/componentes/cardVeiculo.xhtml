@@ -15,7 +15,7 @@
 
 <cc:implementation>
 	<h:link outcome="/automovel/visualizar" styleClass="fm-card-link">
-		<f:param name="cod" value="#{cc.attrs.auto.codigo}"/>
+		<f:param name="cod" value="#{codigos.encriptar(cc.attrs.auto.id)}"/>
 
 		<h:panelGroup layout="block" styleClass="fm-card">
 

@@ -1,57 +1,59 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="jakarta.faces.facelets"
-      xmlns:h="jakarta.faces.html"
-      xmlns:f="jakarta.faces.core"
-      >
-<h:head>
-  <title>Edição de Automóvel</title>
-</h:head>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="jakarta.faces.html"
+				xmlns:f="jakarta.faces.core"
+				xmlns:ui="jakarta.faces.facelets"
+				xmlns:p="http://primefaces.org/ui">
 
-<h:body>
+	<ui:param name="stateless" value="#{false}"/>
 
-	<h:form>
-		<h:dataTable value="#{automovelBean.automoveis}" var="automovel" border="1">
-			<h:column>
-				<f:facet name="header">ID</f:facet>
-				#{automovel.id}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Marca</f:facet>
-				#{automovel.modelo.marca}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Modelo</f:facet>
-				#{automovel.modelo}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Ano Fabricação</f:facet>
-				#{automovel.anoFabricacao}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Ano Modelo</f:facet>
-				#{automovel.anoModelo}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Preço</f:facet>
-				<h:outputText value="#{automovel.preco}">
-					<f:convertNumber type="currency"/>
-				</h:outputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Observações</f:facet>
-				#{automovel.observacoes}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Ações</f:facet>
-				<h:commandLink value="editar" action="editar?faces-redirect=true&amp;includeViewParams=true">
-					<f:setPropertyActionListener target="#{automovelBean.automovel}" value="#{automovel}"/>
-				</h:commandLink>
-			</h:column>
-		</h:dataTable>
-	</h:form>
+	<ui:define name="title">Estoque - Faces Motors</ui:define>
 
-</h:body>
+	<ui:define name="content">
 
-</html>
+		<div class="fm-page-header">
+			<div>
+				<h1>Estoque de veículos</h1>
+				<p><strong>#{automovelBean.totalAutomoveis}</strong> veículos cadastrados.</p>
+			</div>
+			<p:button outcome="/automovel/editar" value="Novo veículo" icon="pi pi-plus" styleClass="fm-cta fm-cta-primary"/>
+		</div>
+
+		<div class="fm-detail-section">
+			<h:form>
+				<p:dataTable value="#{automovelBean.automoveis}" var="auto"
+							 paginator="true" rows="15"
+							 emptyMessage="Nenhum veículo cadastrado."
+							 styleClass="fm-table">
+					<p:column headerText="ID" style="width:90px;">#{auto.id}</p:column>
+					<p:column headerText="Marca" sortBy="#{auto.modelo.marca.nome}">#{auto.modelo.marca}</p:column>
+					<p:column headerText="Modelo" sortBy="#{auto.modelo.descricao}">#{auto.modelo}</p:column>
+					<p:column headerText="Ano" sortBy="#{auto.anoModelo}" style="width:120px;">
+						#{auto.anoFabricacao}/#{auto.anoModelo}
+					</p:column>
+					<p:column headerText="Cor" style="width:120px;">#{auto.cor.descricao}</p:column>
+					<p:column headerText="Km" sortBy="#{auto.kilometragem}" style="width:120px;">
+						<h:outputText value="#{auto.kilometragem}">
+							<f:convertNumber pattern="#,##0"/>
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Preço" sortBy="#{auto.preco}" style="width:160px;">
+						<h:outputText value="#{auto.preco}">
+							<f:convertNumber type="currency" currencySymbol="R$ "/>
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Ações" style="width:100px; text-align:center;">
+						<h:link outcome="/automovel/visualizar" styleClass="fm-link-icon" title="Visualizar">
+							<f:param name="cod" value="#{codigos.encriptar(auto.id)}"/>
+							<i class="pi pi-eye"></i>
+						</h:link>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

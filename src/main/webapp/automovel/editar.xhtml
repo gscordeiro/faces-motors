@@ -1,53 +1,95 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="jakarta.faces.facelets"
-	xmlns:h="jakarta.faces.html"
-	xmlns:f="jakarta.faces.core"
-	xmlns:c="jakarta.tags.core"
-	xmlns:p="http://primefaces.org/ui"
-    xmlns:motors="jakarta.faces.composite/componentes">
-<h:head>
-	<title>Edição de Automóvel</title>
-</h:head>
-<h:body>
-	<h:form>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="jakarta.faces.html"
+				xmlns:f="jakarta.faces.core"
+				xmlns:ui="jakarta.faces.facelets"
+				xmlns:p="http://primefaces.org/ui">
 
-		<h:messages />
+	<ui:param name="stateless" value="#{false}"/>
 
-		<c:set var="auto" value="#{automovelBean.automovel}" />
-		<c:set var="controller" value="#{automovelBean}" />
+	<ui:define name="title">Novo veículo - Faces Motors</ui:define>
 
-		<motors:painel colunas="2">
-			<f:facet name="header">  
-		        Automóvel
-		    </f:facet>
-		    <f:facet name="footer">  
-		        Desenvolvido pela Casa do Código
-		    </f:facet>
-		
-		
-			Marca: <h:selectOneMenu id="selectMarca" label="marca" value="#{controller.marca}" required="true" converter="entityConverter">
-						<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true" />
-						<f:selectItems value="#{marcaBean.marcas}" var="marca" itemValue="#{marca}" itemLabel="#{marca.nome}" />
-						<f:ajax render="selectModelo" />
-					</h:selectOneMenu>
-			Modelo: <h:selectOneMenu id="selectModelo" label="modelo" value="#{auto.modelo}" required="true" converter="entityConverter">
-						<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true" />
-						<f:selectItems value="#{controller.marca.modelos}" var="modelo" itemValue="#{modelo}" itemLabel="#{modelo.descricao}" />
-					</h:selectOneMenu>
-			Ano de Fabricação: <h:inputText value="#{auto.anoFabricacao}" />
-			Ano do Modelo: <h:inputText value="#{auto.anoModelo}" />
-			Preço: <h:inputText value="#{auto.preco}" />
-			Kilometragem: <h:inputText value="#{auto.kilometragem}" />
-			Observações: <h:inputTextarea value="#{auto.observacoes}" />
-				
-		</motors:painel>
+	<ui:define name="content">
 
-		<h:commandButton value="Salvar" action="#{controller.salvar(auto)}" />
-	</h:form>
-	
-</h:body>
-</html>
+		<div class="fm-page-header">
+			<div>
+				<h1>Novo veículo</h1>
+				<p>Cadastro de automóvel no estoque.</p>
+			</div>
+			<p:button outcome="/automovel/listar" value="Voltar" icon="pi pi-arrow-left" styleClass="fm-cta fm-cta-ghost"/>
+		</div>
 
+		<div class="fm-detail-section">
+			<h:form id="formAuto" styleClass="fm-form">
+				<p:messages showDetail="true" closable="true"/>
 
+				<div class="fm-form-grid">
+
+					<div class="fm-field">
+						<p:outputLabel for="selMarca" value="Marca"/>
+						<p:selectOneMenu id="selMarca" value="#{automovelBean.marca}" converter="entityConverter"
+										 required="true" requiredMessage="Selecione a marca.">
+							<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true"/>
+							<f:selectItems value="#{marcaBean.marcas}" var="marca"
+										   itemValue="#{marca}" itemLabel="#{marca.nome}"/>
+							<p:ajax update="selModelo"/>
+						</p:selectOneMenu>
+					</div>
+
+					<div class="fm-field">
+						<p:outputLabel for="selModelo" value="Modelo"/>
+						<p:selectOneMenu id="selModelo" value="#{automovelBean.automovel.modelo}"
+										 converter="entityConverter" required="true"
+										 requiredMessage="Selecione o modelo.">
+							<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true"/>
+							<f:selectItems value="#{automovelBean.marca.modelos}" var="modelo"
+										   itemValue="#{modelo}" itemLabel="#{modelo.descricao}"/>
+						</p:selectOneMenu>
+					</div>
+
+					<div class="fm-field">
+						<p:outputLabel for="anoFab" value="Ano de fabricação"/>
+						<p:inputNumber id="anoFab" value="#{automovelBean.automovel.anoFabricacao}"
+									   decimalPlaces="0" thousandSeparator=""/>
+					</div>
+
+					<div class="fm-field">
+						<p:outputLabel for="anoMod" value="Ano do modelo"/>
+						<p:inputNumber id="anoMod" value="#{automovelBean.automovel.anoModelo}"
+									   decimalPlaces="0" thousandSeparator=""/>
+					</div>
+
+					<div class="fm-field">
+						<p:outputLabel for="preco" value="Preço (R$)"/>
+						<p:inputNumber id="preco" value="#{automovelBean.automovel.preco}"
+									   decimalPlaces="2" thousandSeparator="." decimalSeparator=","/>
+					</div>
+
+					<div class="fm-field">
+						<p:outputLabel for="km" value="Quilometragem"/>
+						<p:inputNumber id="km" value="#{automovelBean.automovel.kilometragem}"
+									   decimalPlaces="0" thousandSeparator="."/>
+					</div>
+
+				</div>
+
+				<div class="fm-field">
+					<p:outputLabel for="obs" value="Observações"/>
+					<p:inputTextarea id="obs" value="#{automovelBean.automovel.observacoes}"
+									 rows="4" autoResize="false"/>
+				</div>
+
+				<div class="fm-form-actions">
+					<p:commandButton value="Salvar" icon="pi pi-check"
+									 action="#{automovelBean.salvar(automovelBean.automovel)}"
+									 update="@form" styleClass="fm-cta fm-cta-primary"/>
+					<p:button outcome="/automovel/listar" value="Cancelar" icon="pi pi-times" styleClass="fm-cta fm-cta-ghost"/>
+				</div>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

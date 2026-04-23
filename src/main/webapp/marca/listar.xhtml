@@ -1,27 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="jakarta.faces.facelets"
-      xmlns:h="jakarta.faces.html"
-      xmlns:f="jakarta.faces.core"
-      >
-<h:head>
-  <title>Listagem de Marca</title>
-</h:head>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="jakarta.faces.html"
+				xmlns:f="jakarta.faces.core"
+				xmlns:ui="jakarta.faces.facelets"
+				xmlns:p="http://primefaces.org/ui">
 
-<h:body>
+	<ui:param name="stateless" value="#{false}"/>
 
-	<h:dataTable value="#{marcaBean.marcas}" var="marca" border="1">
-		<h:column>
-			<f:facet name="head">ID</f:facet>
-			#{marca.id}
-		</h:column>
-		<h:column>
-			<f:facet name="head">Marca</f:facet>
-			#{marca.nome}
-		</h:column>
-	</h:dataTable>
+	<ui:define name="title">Marcas - Faces Motors</ui:define>
 
-</h:body>
+	<ui:define name="content">
 
-</html>
+		<div class="fm-page-header">
+			<div>
+				<h1>Marcas</h1>
+				<p>Marcas cadastradas no sistema.</p>
+			</div>
+			<p:button outcome="/marca/editar" value="Nova marca" icon="pi pi-plus" styleClass="fm-cta fm-cta-primary"/>
+		</div>
+
+		<div class="fm-detail-section">
+			<p:dataTable value="#{marcaBean.marcas}" var="m"
+						 paginator="true" rows="15"
+						 emptyMessage="Nenhuma marca cadastrada."
+						 styleClass="fm-table">
+				<p:column headerText="ID" style="width:100px;">#{m.id}</p:column>
+				<p:column headerText="Nome">#{m.nome}</p:column>
+				<p:column headerText="Modelos" style="width:140px; text-align:center;">
+					<p:tag value="#{m.modelos.size()}" severity="info"/>
+				</p:column>
+			</p:dataTable>
+		</div>
+
+	</ui:define>
+</ui:composition>

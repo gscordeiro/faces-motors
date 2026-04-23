@@ -1,41 +1,42 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="jakarta.faces.facelets"
-      xmlns:h="jakarta.faces.html"
-      xmlns:f="jakarta.faces.core"
-      xmlns:p="http://primefaces.org/ui"
-      >
-<h:head>
-  <title>Listagem de Modelos</title>
-</h:head>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="jakarta.faces.html"
+				xmlns:f="jakarta.faces.core"
+				xmlns:ui="jakarta.faces.facelets"
+				xmlns:p="http://primefaces.org/ui">
 
-<h:body>
+	<ui:param name="stateless" value="#{false}"/>
 
-	
-		<input type="button" value="Vai para página 2"  onclick="tabelinha.getPaginator().setPage(1);"/>
+	<ui:define name="title">Modelos - Faces Motors</ui:define>
 
-	<h:form>
-		
-		
-		<p:dataTable widgetVar="tabelinha" value="#{modeloBean.lazyDataModel}" var="modelo" rows="10" paginator="true" lazy="true" style="width: 50%">
-			<p:column>
-				<f:facet name="header">ID</f:facet>
-				#{modelo.id}
-			</p:column>
-			<p:column>
-				<f:facet name="header">Marca</f:facet>
-				#{modelo.marca.nome}
-			</p:column>
-			<p:column>
-				<f:facet name="header">Modelo</f:facet>
-				#{modelo.descricao}
-			</p:column>
-		</p:dataTable>
-	</h:form>
-	
-		
-	
-</h:body>
+	<ui:define name="content">
 
-</html>
+		<div class="fm-page-header">
+			<div>
+				<h1>Modelos</h1>
+				<p>Modelos cadastrados — paginação <strong>lazy</strong> diretamente na consulta JPA.</p>
+			</div>
+			<p:button outcome="/modelo/editar" value="Novo modelo" icon="pi pi-plus" styleClass="fm-cta fm-cta-primary"/>
+		</div>
+
+		<div class="fm-detail-section">
+			<h:form>
+				<p:dataTable value="#{modeloBean.lazyDataModel}" var="m"
+							 paginator="true" rows="10" lazy="true"
+							 emptyMessage="Nenhum modelo cadastrado."
+							 styleClass="fm-table">
+					<p:column headerText="ID" style="width:100px;">#{m.id}</p:column>
+					<p:column headerText="Marca" sortBy="#{m.marca.nome}">#{m.marca.nome}</p:column>
+					<p:column headerText="Modelo" sortBy="#{m.descricao}">#{m.descricao}</p:column>
+					<p:column headerText="Potência (cv)" style="width:140px; text-align:center;">
+						<p:tag value="#{m.potencia}" severity="info"/>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

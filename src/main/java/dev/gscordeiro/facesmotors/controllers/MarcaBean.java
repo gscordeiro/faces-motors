@@ -39,7 +39,11 @@ public class MarcaBean implements Serializable {
 
 	public List<Marca> getMarcas() {
 		if (marcas == null) {
-			marcas = em.createQuery("select m from Marca m", Marca.class).getResultList();
+			// Carrega os modelos junto para evitar LazyInitializationException
+			// quando a view exibe a contagem de modelos por marca.
+			marcas = em.createQuery(
+					"select distinct m from Marca m left join fetch m.modelos order by m.nome",
+					Marca.class).getResultList();
 		}
 
 		return marcas;

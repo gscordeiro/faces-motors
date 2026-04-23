@@ -37,7 +37,6 @@ public class DataPopulator {
 		Long total = em.createQuery("select count(m) from Marca m", Long.class).getSingleResult();
 		if (total > 0) {
 			logger.info("Dados iniciais já presentes ({} marcas), pulando carga.", total);
-			backfillCodigos();
 			return;
 		}
 		logger.info("Iniciando carga de dados de demonstração...");
@@ -236,17 +235,6 @@ public class DataPopulator {
 		foto.setAutomovel(auto);
 		em.persist(foto);
 		auto.getFotos().add(foto);
-	}
-
-	private void backfillCodigos() {
-		List<Automovel> sem = em.createQuery(
-				"select a from Automovel a where a.codigo is null",
-				Automovel.class).getResultList();
-		if (sem.isEmpty()) return;
-		logger.info("Atribuindo códigos a {} veículos legados.", sem.size());
-		for (Automovel a : sem) {
-			a.setCodigo(java.util.UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase());
-		}
 	}
 
 	private record ModeloDef(String nome, int potencia, String tipo) {}

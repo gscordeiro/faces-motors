@@ -8,6 +8,8 @@
 				xmlns:ui="jakarta.faces.facelets"
 				xmlns:motors="jakarta.faces.composite/componentes">
 
+	<ui:param name="stateless" value="#{true}"/>
+
 	<ui:define name="title">Faces Motors - Seminovos selecionados</ui:define>
 
 	<ui:define name="hero">
@@ -22,16 +24,16 @@
 	<ui:define name="content">
 
 		<div class="fm-toolbar">
-			<h2><strong>#{vitrineBean.totalAutomoveis}</strong> veículos disponíveis</h2>
+			<h2><strong>#{automovelBean.totalAutomoveis}</strong> veículos disponíveis</h2>
 			<span class="fm-sort">Ordenado por: maior preço</span>
 		</div>
 
-		<ui:fragment rendered="#{vitrineBean.totalAutomoveis == 0}">
+		<ui:fragment rendered="#{automovelBean.totalAutomoveis == 0}">
 			<div class="fm-empty">Nenhum veículo cadastrado no momento.</div>
 		</ui:fragment>
 
 		<div class="fm-grid">
-			<ui:repeat value="#{vitrineBean.automoveis}" var="auto">
+			<ui:repeat value="#{automovelBean.automoveis}" var="auto">
 				<motors:cardVeiculo auto="#{auto}"/>
 			</ui:repeat>
 		</div>
