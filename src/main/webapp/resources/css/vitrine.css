@@ -99,6 +99,13 @@ a { color: inherit; text-decoration: none; }
 	max-width: 640px;
 }
 
+/* ======================= HERO SPACER ======================= */
+/* Páginas sem hero herdam este espaçador como valor padrão do slot.
+   64px − 32px (margin negativa do container) = 32px de respiro entre header e conteúdo. */
+.fm-hero-spacer {
+	height: 64px;
+}
+
 /* ======================= CONTAINER ======================= */
 .fm-container {
 	max-width: 1280px;
