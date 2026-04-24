@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import jakarta.data.Limit;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -34,7 +35,7 @@ public class AutomovelService {
 
 	@Transactional
 	public void salvar(Automovel auto) {
-		repositorio.salvar(auto);
+		repositorio.save(auto);
 	}
 
 	public List<Automovel> listar() {
@@ -78,7 +79,7 @@ public class AutomovelService {
 				atual.getId(),
 				atual.getModelo().getMarca(),
 				atual.getPreco(),
-				3);
+				Limit.of(3));
 
 		if (idsOrdenados.isEmpty()) {
 			return List.of();

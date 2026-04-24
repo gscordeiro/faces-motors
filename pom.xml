@@ -18,11 +18,11 @@
         <jakartaee-api.version>11.0.0</jakartaee-api.version>
         <primefaces.version>15.0.14</primefaces.version>
 
-        <wildfly.version>36.0.1.Final</wildfly.version>
-        <hibernate.version>6.6.7.Final</hibernate.version>
+        <wildfly.version>39.0.1.Final</wildfly.version>
+        <hibernate.version>7.1.11.Final</hibernate.version>
 
-        <galleon-datasources.version>10.0.0.Final</galleon-datasources.version>
-        <wildfly-jar-plugin.version>12.0.0.Final</wildfly-jar-plugin.version>
+        <galleon-datasources.version>11.3.0.Final</galleon-datasources.version>
+        <wildfly-jar-plugin.version>13.0.0.Final</wildfly-jar-plugin.version>
 
         <version.junit>5.10.1</version.junit>
     </properties>
@@ -81,6 +81,13 @@
                     <release>${java.version}</release>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <parameters>true</parameters>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.hibernate.orm</groupId>
+                            <artifactId>hibernate-jpamodelgen</artifactId>
+                            <version>${hibernate.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
@@ -95,10 +102,12 @@
                 <artifactId>wildfly-jar-maven-plugin</artifactId>
                 <version>${wildfly-jar-plugin.version}</version>
                 <configuration>
+                    <!--
                     <hollow-jar>${wildfly.bootable.hollow}</hollow-jar>
                     <skip>${wildfly.bootable.package.skip}</skip>
                     <cli-sessions>
                     </cli-sessions>
+                    -->
                     <jvmArguments>
                         <arg>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</arg>
                     </jvmArguments>
