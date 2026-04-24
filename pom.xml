@@ -81,13 +81,6 @@
                     <release>${java.version}</release>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <parameters>true</parameters>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.hibernate.orm</groupId>
-                            <artifactId>hibernate-jpamodelgen</artifactId>
-                            <version>6.6.14.Final</version>
-                        </path>
-                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
