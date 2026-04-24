@@ -7,15 +7,22 @@
 
 	<persistence-unit name="default" transaction-type="JTA">
 		<jta-data-source>java:/datasources/FacesMotorsDS</jta-data-source>
-		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+<!--		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>-->
 		<validation-mode>AUTO</validation-mode>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.highlight_sql" value="true" />
-			<property name="hibernate.cache.use_second_level_cache" value="true"/>
-			<property name="hibernate.cache.use_query_cache" value="true"/>
+			<!--
+				L2 cache desligado: a combinação Jakarta Data + StatelessSession
+				(exigido por BasicRepository) + L2 cache dispara NPE em
+				EntityEntry.getMaybeLazySet no 2º acesso no Hibernate 7.1.x.
+				As @Cacheable nas entidades ficam inativas enquanto isto estiver
+				off.
+			-->
+			<property name="hibernate.cache.use_second_level_cache" value="false"/>
+			<property name="hibernate.cache.use_query_cache" value="false"/>
 		</properties>
 	</persistence-unit>
 
