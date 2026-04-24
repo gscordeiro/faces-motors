@@ -14,10 +14,10 @@
 </cc:interface>
 
 <cc:implementation>
-	<h:link outcome="/automovel/visualizar" styleClass="fm-card-link">
+	<h:link outcome="/automovel/visualizar" styleClass="fm-card-link block h-full">
 		<f:param name="cod" value="#{codigos.encriptar(cc.attrs.auto.id)}"/>
 
-		<h:panelGroup layout="block" styleClass="fm-card">
+		<h:panelGroup layout="block" styleClass="fm-card flex flex-column">
 
 			<h:panelGroup layout="block" styleClass="fm-card-img">
 				<h:graphicImage library="images"
@@ -30,7 +30,7 @@
 				</span>
 			</h:panelGroup>
 
-			<h:panelGroup layout="block" styleClass="fm-card-body">
+			<h:panelGroup layout="block" styleClass="fm-card-body flex flex-column flex-1">
 				<p class="fm-marca">#{cc.attrs.auto.modelo.marca}</p>
 				<h3 class="fm-modelo">#{cc.attrs.auto.modelo}</h3>
 
@@ -57,7 +57,7 @@
 
 				<p class="fm-obs">#{cc.attrs.auto.observacoes}</p>
 
-				<h:panelGroup layout="block" styleClass="fm-price-row">
+				<h:panelGroup layout="block" styleClass="fm-price-row flex align-items-center justify-content-between flex-wrap">
 					<h:outputText value="#{cc.attrs.auto.preco}" styleClass="fm-price">
 						<f:convertNumber type="currency" currencySymbol="R$ "/>
 					</h:outputText>

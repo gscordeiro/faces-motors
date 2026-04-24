@@ -40,18 +40,12 @@ a { color: inherit; text-decoration: none; }
 	max-width: 1280px;
 	margin: 0 auto;
 	padding: 16px 24px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	gap: 24px;
-	flex-wrap: wrap;
 }
 .fm-logo {
-	display: flex;
-	align-items: center;
-	gap: 12px;
 	font-size: 20px;
 	letter-spacing: 1px;
+	gap: 12px;
 }
 .fm-logo strong { color: var(--fm-accent); font-weight: 800; }
 .fm-logo-mark {
@@ -68,10 +62,9 @@ a { color: inherit; text-decoration: none; }
 	box-shadow: inset 0 0 0 2px rgba(255,255,255,0.15);
 }
 .fm-nav {
-	display: flex;
-	gap: 24px;
 	font-size: 14px;
 	font-weight: 500;
+	gap: 24px;
 }
 .fm-nav a {
 	color: rgba(255,255,255,0.85);
@@ -119,10 +112,6 @@ a { color: inherit; text-decoration: none; }
 	border-radius: var(--fm-radius);
 	padding: 18px 24px;
 	box-shadow: var(--fm-shadow);
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
 	gap: 12px;
 	margin-bottom: 24px;
 }
@@ -139,6 +128,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ======================= GRID ======================= */
+/* auto-fill não tem equivalente PrimeFlex — mantido em CSS */
 .fm-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -147,10 +137,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ======================= CARD ======================= */
 .fm-card-link {
-	display: block;
 	color: inherit;
 	text-decoration: none;
-	height: 100%;
+	/* display:block height:100% → PrimeFlex block h-full */
 }
 .fm-card-link:focus-visible {
 	outline: 3px solid var(--fm-accent);
@@ -162,11 +151,10 @@ a { color: inherit; text-decoration: none; }
 	border-radius: var(--fm-radius);
 	overflow: hidden;
 	box-shadow: var(--fm-shadow);
-	display: flex;
-	flex-direction: column;
 	transition: transform .2s ease, box-shadow .2s ease;
 	border: 1px solid var(--fm-border);
 	height: 100%;
+	/* display:flex flex-direction:column → PrimeFlex flex flex-column */
 }
 .fm-card-link:hover .fm-card {
 	transform: translateY(-4px);
@@ -222,9 +210,7 @@ a { color: inherit; text-decoration: none; }
 
 .fm-card-body {
 	padding: 16px 18px 18px;
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+	/* display:flex flex-direction:column flex:1 → PrimeFlex flex flex-column flex-1 */
 }
 .fm-marca {
 	margin: 0;
@@ -241,6 +227,7 @@ a { color: inherit; text-decoration: none; }
 	color: var(--fm-text);
 	letter-spacing: -0.2px;
 }
+/* auto-fill 2 colunas não tem equivalente PrimeFlex limpo em <ul> — mantido em CSS */
 .fm-specs {
 	list-style: none;
 	margin: 0 0 14px;
@@ -278,11 +265,8 @@ a { color: inherit; text-decoration: none; }
 
 .fm-price-row {
 	margin-top: auto;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	gap: 12px;
-	flex-wrap: wrap;
+	/* display:flex align-items justify-content flex-wrap → PrimeFlex */
 }
 .fm-price {
 	font-size: 22px;
@@ -335,12 +319,11 @@ a { color: inherit; text-decoration: none; }
 
 /* ======================= BREADCRUMB ======================= */
 .fm-breadcrumb {
-	display: flex;
-	align-items: center;
-	gap: 8px;
 	font-size: 13px;
 	color: var(--fm-muted);
 	margin-bottom: 18px;
+	gap: 8px;
+	/* display:flex align-items → PrimeFlex flex align-items-center */
 }
 .fm-breadcrumb a {
 	color: var(--fm-primary);
@@ -349,10 +332,8 @@ a { color: inherit; text-decoration: none; }
 .fm-breadcrumb strong { color: var(--fm-text); }
 
 /* ======================= DETAIL ======================= */
+/* layout de 2 colunas migrado para PrimeFlex grid (col-12 lg:col-8 / lg:col-4) */
 .fm-detail {
-	display: grid;
-	grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-	gap: 24px;
 	margin-bottom: 32px;
 }
 .fm-detail-gallery {
@@ -381,12 +362,11 @@ a { color: inherit; text-decoration: none; }
 	border-radius: var(--fm-radius);
 	padding: 24px;
 	box-shadow: var(--fm-shadow);
-	display: flex;
-	flex-direction: column;
 	gap: 14px;
 	align-self: start;
 	position: sticky;
 	top: 90px;
+	/* display:flex flex-direction:column → PrimeFlex flex flex-column */
 }
 .fm-detail-title {
 	margin: 0;
@@ -395,9 +375,8 @@ a { color: inherit; text-decoration: none; }
 	letter-spacing: -0.5px;
 }
 .fm-tag-row {
-	display: flex;
-	flex-wrap: wrap;
 	gap: 8px;
+	/* display:flex flex-wrap → PrimeFlex flex flex-wrap */
 }
 .fm-detail-price {
 	font-size: 36px;
@@ -413,9 +392,8 @@ a { color: inherit; text-decoration: none; }
 	color: var(--fm-muted);
 }
 .fm-detail-actions {
-	display: flex;
-	flex-direction: column;
 	gap: 10px;
+	/* display:flex flex-direction:column → PrimeFlex flex flex-column */
 }
 .fm-detail-actions .fm-cta {
 	width: 100%;
@@ -455,6 +433,7 @@ a { color: inherit; text-decoration: none; }
 	font-weight: 700;
 	color: var(--fm-text);
 }
+/* auto-fill — mantido em CSS */
 .fm-spec-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -488,12 +467,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ======================= ADMIN: PAGE HEADER ======================= */
 .fm-page-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	gap: 16px;
-	flex-wrap: wrap;
 	margin: 32px 0 18px;
+	/* display:flex align-items justify-content flex-wrap → PrimeFlex */
 }
 .fm-page-header h1 {
 	margin: 0 0 4px;
@@ -532,15 +508,13 @@ a { color: inherit; text-decoration: none; }
 	background: var(--fm-surface-alt) !important;
 }
 .fm-link-icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
 	width: 32px;
 	height: 32px;
 	border-radius: 8px;
 	color: var(--fm-primary);
 	background: rgba(29, 78, 216, 0.08);
 	transition: background .15s, color .15s;
+	/* display:inline-flex align-items justify-content → PrimeFlex */
 }
 .fm-link-icon:hover {
 	background: var(--fm-primary);
@@ -549,20 +523,10 @@ a { color: inherit; text-decoration: none; }
 
 /* ======================= ADMIN: FORM ======================= */
 .fm-form {
-	display: flex;
-	flex-direction: column;
 	gap: 18px;
+	/* display:flex flex-direction:column → PrimeFlex flex flex-column */
 }
-.fm-form-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-	gap: 16px 20px;
-}
-.fm-field {
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-}
+/* .fm-form-grid substituído por PrimeFlex grid no HTML */
 .fm-field > label,
 .fm-field .ui-outputlabel {
 	font-size: 12px !important;
@@ -591,25 +555,23 @@ a { color: inherit; text-decoration: none; }
 	outline: none !important;
 }
 .fm-field-inline {
-	display: flex;
-	align-items: center;
-	gap: 10px;
 	color: var(--fm-text);
 	font-size: 14px;
+	gap: 10px;
+	/* display:flex align-items → PrimeFlex flex align-items-center */
 }
 .fm-form-actions {
-	display: flex;
-	gap: 12px;
 	margin-top: 8px;
-	flex-wrap: wrap;
+	gap: 12px;
+	/* display:flex flex-wrap → PrimeFlex flex flex-wrap */
 }
 .fm-form-actions .ui-button {
 	padding: 10px 18px !important;
 }
 
 /* ======================= RESPONSIVE ======================= */
-@media (max-width: 900px) {
-	.fm-detail { grid-template-columns: 1fr; }
+/* breakpoint lg (992px) alinhado ao PrimeFlex — aside perde sticky em telas menores */
+@media (max-width: 992px) {
 	.fm-detail-aside { position: static; }
 }
 @media (max-width: 640px) {

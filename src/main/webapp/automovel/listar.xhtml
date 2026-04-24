@@ -14,7 +14,7 @@
 
 	<ui:define name="content">
 
-		<div class="fm-page-header">
+		<div class="fm-page-header flex align-items-center justify-content-between flex-wrap">
 			<div>
 				<h1>Estoque de veículos</h1>
 				<p><strong>#{automovelBean.totalAutomoveis}</strong> veículos cadastrados.</p>
@@ -46,7 +46,7 @@
 						</h:outputText>
 					</p:column>
 					<p:column headerText="Ações" style="width:100px; text-align:center;">
-						<h:link outcome="/automovel/visualizar" styleClass="fm-link-icon" title="Visualizar">
+						<h:link outcome="/automovel/visualizar" styleClass="fm-link-icon inline-flex align-items-center justify-content-center" title="Visualizar">
 							<f:param name="cod" value="#{codigos.encriptar(auto.id)}"/>
 							<i class="pi pi-eye"></i>
 						</h:link>

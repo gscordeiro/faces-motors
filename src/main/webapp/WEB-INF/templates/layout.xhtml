@@ -15,18 +15,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<meta name="description" content="Vitrine de carros seminovos da Faces Motors."/>
 		<h:outputStylesheet library="css" name="vitrine.css"/>
+		<link rel="stylesheet" href="https://unpkg.com/primeflex/primeflex.min.css"/>
 		<ui:insert name="head"/>
 	</h:head>
 
 	<h:body>
 
 		<header class="fm-header">
-			<div class="fm-header-inner">
-				<h:link outcome="/vitrine" styleClass="fm-logo">
+			<div class="fm-header-inner flex align-items-center justify-content-between flex-wrap">
+				<h:link outcome="/vitrine" styleClass="fm-logo flex align-items-center">
 					<span class="fm-logo-mark">FM</span>
 					<span>Faces <strong>Motors</strong></span>
 				</h:link>
-				<nav class="fm-nav">
+				<nav class="fm-nav flex">
 					<h:link outcome="/vitrine">Comprar</h:link>
 					<h:link outcome="/marca/listar">Marcas</h:link>
 					<h:link outcome="/modelo/listar">Modelos</h:link>

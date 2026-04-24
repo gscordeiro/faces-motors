@@ -14,7 +14,7 @@
 
 	<ui:define name="content">
 
-		<div class="fm-page-header">
+		<div class="fm-page-header flex align-items-center justify-content-between flex-wrap">
 			<div>
 				<h1>Novo veículo</h1>
 				<p>Cadastro de automóvel no estoque.</p>
@@ -23,12 +23,12 @@
 		</div>
 
 		<div class="fm-detail-section">
-			<h:form id="formAuto" styleClass="fm-form">
+			<h:form id="formAuto" styleClass="fm-form flex flex-column">
 				<p:messages showDetail="true" closable="true"/>
 
-				<div class="fm-form-grid">
+				<div class="grid">
 
-					<div class="fm-field">
+					<div class="fm-field col-12 md:col-6 flex flex-column">
 						<p:outputLabel for="selMarca" value="Marca"/>
 						<p:selectOneMenu id="selMarca" value="#{automovelBean.marca}" converter="entityConverter"
 										 required="true" requiredMessage="Selecione a marca.">
@@ -39,7 +39,7 @@
 						</p:selectOneMenu>
 					</div>
 
-					<div class="fm-field">
+					<div class="fm-field col-12 md:col-6 flex flex-column">
 						<p:outputLabel for="selModelo" value="Modelo"/>
 						<p:selectOneMenu id="selModelo" value="#{automovelBean.automovel.modelo}"
 										 converter="entityConverter" required="true"
@@ -50,25 +50,25 @@
 						</p:selectOneMenu>
 					</div>
 
-					<div class="fm-field">
+					<div class="fm-field col-12 md:col-6 flex flex-column">
 						<p:outputLabel for="anoFab" value="Ano de fabricação"/>
 						<p:inputNumber id="anoFab" value="#{automovelBean.automovel.anoFabricacao}"
 									   decimalPlaces="0" thousandSeparator=""/>
 					</div>
 
-					<div class="fm-field">
+					<div class="fm-field col-12 md:col-6 flex flex-column">
 						<p:outputLabel for="anoMod" value="Ano do modelo"/>
 						<p:inputNumber id="anoMod" value="#{automovelBean.automovel.anoModelo}"
 									   decimalPlaces="0" thousandSeparator=""/>
 					</div>
 
-					<div class="fm-field">
+					<div class="fm-field col-12 md:col-6 flex flex-column">
 						<p:outputLabel for="preco" value="Preço (R$)"/>
 						<p:inputNumber id="preco" value="#{automovelBean.automovel.preco}"
 									   decimalPlaces="2" thousandSeparator="." decimalSeparator=","/>
 					</div>
 
-					<div class="fm-field">
+					<div class="fm-field col-12 md:col-6 flex flex-column">
 						<p:outputLabel for="km" value="Quilometragem"/>
 						<p:inputNumber id="km" value="#{automovelBean.automovel.kilometragem}"
 									   decimalPlaces="0" thousandSeparator="."/>
@@ -76,13 +76,13 @@
 
 				</div>
 
-				<div class="fm-field">
+				<div class="fm-field flex flex-column">
 					<p:outputLabel for="obs" value="Observações"/>
 					<p:inputTextarea id="obs" value="#{automovelBean.automovel.observacoes}"
 									 rows="4" autoResize="false"/>
 				</div>
 
-				<div class="fm-form-actions">
+				<div class="fm-form-actions flex flex-wrap">
 					<p:commandButton value="Salvar" icon="pi pi-check"
 									 action="#{automovelBean.salvar(automovelBean.automovel)}"
 									 update="@form" styleClass="fm-cta fm-cta-primary"/>

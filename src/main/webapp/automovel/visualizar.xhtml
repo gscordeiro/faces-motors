@@ -38,7 +38,7 @@
 
 		<ui:fragment rendered="#{automovelBean.encontrado}">
 
-			<nav class="fm-breadcrumb">
+			<nav class="fm-breadcrumb flex align-items-center">
 				<h:link outcome="/vitrine">Vitrine</h:link>
 				<span>/</span>
 				<span>#{automovelBean.automovel.modelo.marca}</span>
@@ -46,9 +46,9 @@
 				<strong>#{automovelBean.automovel.modelo}</strong>
 			</nav>
 
-			<section class="fm-detail">
+			<section class="fm-detail grid">
 
-				<div class="fm-detail-gallery">
+				<div class="fm-detail-gallery col-12 lg:col-8">
 					<p:galleria value="#{automovelBean.automovel.fotos}" var="f"
 								numVisible="4" showIndicators="false" showCaption="false"
 								containerStyle="width: 100%;">
@@ -69,11 +69,11 @@
 					</ui:fragment>
 				</div>
 
-				<aside class="fm-detail-aside">
+				<aside class="fm-detail-aside col-12 lg:col-4 flex flex-column">
 					<p class="fm-marca">#{automovelBean.automovel.modelo.marca}</p>
 					<h1 class="fm-detail-title">#{automovelBean.automovel.modelo}</h1>
 
-					<div class="fm-tag-row">
+					<div class="fm-tag-row flex flex-wrap">
 						<p:tag value="#{automovelBean.automovel.anoFabricacao}/#{automovelBean.automovel.anoModelo}"
 							   icon="pi pi-calendar" severity="info"/>
 						<p:tag value="#{automovelBean.automovel.cor.descricao}" severity="secondary"/>
@@ -95,7 +95,7 @@
 
 					<p:divider/>
 
-					<div class="fm-detail-actions">
+					<div class="fm-detail-actions flex flex-column">
 						<p:button value="Tenho interesse" icon="pi pi-envelope" styleClass="fm-cta fm-cta-primary"/>
 						<p:button value="Simular financiamento" icon="pi pi-calculator" styleClass="fm-cta fm-cta-ghost"/>
 					</div>
