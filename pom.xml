@@ -18,7 +18,7 @@
         <jakartaee-api.version>11.0.0</jakartaee-api.version>
         <primefaces.version>15.0.14</primefaces.version>
 
-        <wildfly.version>39.0.1.Final</wildfly.version>
+        <wildfly.version>40.0.0.Beta1</wildfly.version>
         <hibernate.version>7.1.11.Final</hibernate.version>
 
         <galleon-datasources.version>11.3.0.Final</galleon-datasources.version>
