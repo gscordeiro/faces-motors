@@ -50,7 +50,7 @@ public class AutomovelService {
 		Marca marca = filtro.getMarca();
 		String descricao = filtro.getDescricao();
 		boolean temDescricao = descricao != null && !descricao.isEmpty();
-		String descricaoLike = temDescricao ? "%" + descricao + "%" : null;
+		String descricaoLike = temDescricao ? "%" + descricao.toLowerCase() + "%" : null;
 
 		if (marca != null && temDescricao) {
 			return repositorio.buscarPorMarcaEDescricao(marca, descricaoLike);

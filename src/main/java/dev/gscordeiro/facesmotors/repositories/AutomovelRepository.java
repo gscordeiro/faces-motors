@@ -35,7 +35,7 @@ public interface AutomovelRepository extends BasicRepository<Automovel, Long> {
 	@Query(JPQL_BASE + "where a.modelo.marca = :marca order by a.preco desc")
 	List<Automovel> buscarPorMarca(Marca marca);
 
-	@Query(JPQL_BASE + "where a.modelo.descricao like :descricao order by a.preco desc")
+	@Query(JPQL_BASE + "where lower(a.modelo.descricao) like :descricao order by a.preco desc")
 	List<Automovel> buscarPorDescricao(String descricao);
 
 	@Query(JPQL_BASE + "where a.modelo.marca = :marca and a.modelo.descricao like :descricao order by a.preco desc")

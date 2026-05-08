@@ -27,7 +27,7 @@ public class EntityConverter implements Converter<Object> {
 			Class<?> classe = object.getClass();
 			Long id = (Long) classe.getMethod("getId").invoke(object);
 			
-			return classe.getName() + "-" + id;
+			return classe.getName() + "#" + id;
 		} catch (Exception e) {
 			logger.error("Erro ao converter entidade em String", e);
 			return null;
@@ -36,10 +36,10 @@ public class EntityConverter implements Converter<Object> {
 	}
 	@Override
 	public Object getAsObject(FacesContext facesContext, UIComponent component, String string) {
-		if(string == null || string.isEmpty()) return null;
+		if(string == null || string.isBlank() || !string.contains("#")) return null;
 		
 		try {
-			String[] values = string.split("-");
+			String[] values = string.split("#");
 			return em.find(Class.forName(values[0]), Long.valueOf(values[1]));
 		} catch (Exception e) {
 			logger.error("Erro ao converter String em entidade", e);
