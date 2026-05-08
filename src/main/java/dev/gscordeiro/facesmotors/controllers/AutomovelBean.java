@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dev.gscordeiro.facesmotors.repositories.AutomovelRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -20,6 +21,8 @@ import org.hibernate.Session;
 import dev.gscordeiro.facesmotors.entities.Automovel;
 import dev.gscordeiro.facesmotors.entities.Marca;
 import dev.gscordeiro.facesmotors.entities.Modelo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Named
@@ -27,9 +30,14 @@ import dev.gscordeiro.facesmotors.entities.Modelo;
 public class AutomovelBean implements Serializable{
 	
 	static final long serialVersionUID = -8780407253943723401L;
+
+	private Logger logger = LoggerFactory.getLogger(AutomovelBean.class);
 	
 	@Inject
 	EntityManager em;
+
+	@Inject
+	private AutomovelRepository automovelRepository;
 
 	private Automovel automovel;
 	private List<Automovel> automoveis;
@@ -82,7 +90,10 @@ public class AutomovelBean implements Serializable{
 
 	public List<Automovel> getAutomoveis() {
 		if (automoveis == null) {
-			automoveis = em.createNamedQuery(Automovel.LISTAR_DESTAQUES, Automovel.class).getResultList();
+//			automoveis = em.createNamedQuery(Automovel.LISTAR_DESTAQUES, Automovel.class).getResultList();
+
+			logger.info("Buscando automóveis usando repository {}", automovelRepository.getClass().getSimpleName());
+			automoveis = automovelRepository.findAll().toList();
 		}
 
 		return automoveis;

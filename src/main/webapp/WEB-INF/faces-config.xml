@@ -12,14 +12,14 @@
 		</resource-bundle>
 	</application>
 
-	<!--
+	<!-- -->
 	<navigation-rule>
 		<from-view-id>/marca/editar.xhtml</from-view-id>
 		<navigation-case>
-			<if>#{marcaBean.marca.id != null}</if>
+<!--			<if>#{not empty marcaBean.marca.id}</if>-->
 			<to-view-id>/marca/#{marcaBean.continuarInserindo? 'editar' : 'listar'}.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 	</navigation-rule>
-	-->
+
 </faces-config>

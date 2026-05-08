@@ -41,6 +41,10 @@
             <artifactId>quarkus-hibernate-orm</artifactId>
         </dependency>
         <dependency>
+            <groupId>jakarta.data</groupId>
+            <artifactId>jakarta.data-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-h2</artifactId>
         </dependency>
@@ -88,6 +92,12 @@
                 <version>${compiler-plugin.version}</version>
                 <configuration>
                     <parameters>true</parameters>
+                    <annotationProcessorPaths>
+                        <annotationProcessorPath>
+                            <groupId>org.hibernate.orm</groupId>
+                            <artifactId>hibernate-jpamodelgen</artifactId>
+                        </annotationProcessorPath>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
