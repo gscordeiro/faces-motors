@@ -84,6 +84,7 @@ public class AutomovelBean implements Serializable{
 		for (Map.Entry<String, Object> param : params.entrySet()) {
 			query.setParameter(param.getKey(), param.getValue());
 		}
+		query.setHint("org.hibernate.cacheable", true);
 
 		automoveis = query.getResultList();
 	}
