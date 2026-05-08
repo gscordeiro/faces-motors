@@ -19,7 +19,7 @@ public class H2ConsoleStarter {
         webServer = Server.createWebServer("-webPort", "8082", "-webAllowOthers");
         webServer.start();
         logger.info("H2 Console disponível em: http://localhost:8082");
-        logger.info("JDBC URL para conexão: jdbc:h2:mem:facesmotors");
+        logger.info("JDBC URL para conexão: jdbc:h2:file:~/temp/facesmotors_db;AUTO_SERVER=TRUE");
         logger.info("Usuário: sa  |  Senha: (vazia)");
     }
 
