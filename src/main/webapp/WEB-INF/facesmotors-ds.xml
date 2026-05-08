@@ -1,6 +1,6 @@
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema">
   <datasource jndi-name="java:/datasources/FacesMotorsDS" pool-name="FacesMotorsPool">
-      <connection-url>jdbc:h2:file:~/temp/facesmotors_db;AUTO_SERVER=TRUE</connection-url>
+      <connection-url>jdbc:h2:file:~/temp/facesmotors_db2;AUTO_SERVER=TRUE</connection-url>
       <driver>h2</driver>
       <security>
           <user-name>sa</user-name>
